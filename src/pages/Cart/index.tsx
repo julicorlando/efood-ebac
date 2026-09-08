@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Footer from '../../components/Footer'
 import RestaurantHeader from '../../components/RestaurantHeader'
 import type { RootState } from '../../store'
@@ -27,6 +27,7 @@ const formatPrice = (price: number) =>
 
 const Cart = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const items = useSelector((state: RootState) => state.cart.items)
   const total = items.reduce((sum, item) => sum + item.price, 0)
 
@@ -73,7 +74,9 @@ const Cart = () => {
                   <span>Valor total</span>
                   <strong>{formatPrice(total)}</strong>
                 </Total>
-                <FinishButton type="button">Continuar com a entrega</FinishButton>
+                <FinishButton type="button" onClick={() => navigate('/checkout')}>
+                  Continuar com a entrega
+                </FinishButton>
               </Summary>
             </>
           )}
