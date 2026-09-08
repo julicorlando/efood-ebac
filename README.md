@@ -9,16 +9,23 @@ Projeto React baseado no layout do **eFood** disponibilizado pela EBAC no Figma.
 - Vite
 - Styled Components
 - React Router DOM
+- Fetch API (AJAX)
 
-## Funcionalidades desta etapa
+## Funcionalidades
 
-- Home com apresentação do eFood e cards de restaurantes
+- Home com restaurantes carregados via API da EBAC
 - Navegação com React Router
 - Página interna de restaurante
-- Cards de pratos
-- Layout responsivo
-- Estilos globais e componentizados com Styled Components
-- Configuração pronta para publicação na Vercel
+- Cardápio carregado dinamicamente via AJAX
+- Modal de produto com foto, descrição, porção e preço
+- Botão de compra que abre a modal
+- Inclusão demonstrativa no contador do carrinho
+- Layout responsivo com Styled Components
+- Fallback de SPA configurado para a Vercel
+
+## API
+
+`https://api-ebac.vercel.app/api/efood/restaurantes`
 
 ## Executar localmente
 
@@ -35,9 +42,4 @@ npm run build
 
 ## Publicação
 
-O projeto contém `vercel.json` para permitir acesso direto às rotas do React Router em produção.
-
-Na Vercel:
-- Framework Preset: Vite
-- Build Command: `npm run build`
-- Output Directory: `dist`
+O projeto está preparado para deploy na Vercel, com `vercel.json` configurado para as rotas do React Router.

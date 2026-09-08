@@ -3,7 +3,11 @@ import Logo from '../Logo'
 import { Container } from '../../styles/shared'
 import { Cart, HeaderBar, HeaderContent, RestaurantsLink } from './styles'
 
-const RestaurantHeader = () => (
+type Props = {
+  cartCount?: number
+}
+
+const RestaurantHeader = ({ cartCount = 0 }: Props) => (
   <HeaderBar>
     <Container>
       <HeaderContent>
@@ -15,7 +19,7 @@ const RestaurantHeader = () => (
           <Logo />
         </Link>
 
-        <Cart href="#menu">0 produto(s) no carrinho</Cart>
+        <Cart href="#menu">{cartCount} produto(s) no carrinho</Cart>
       </HeaderContent>
     </Container>
   </HeaderBar>

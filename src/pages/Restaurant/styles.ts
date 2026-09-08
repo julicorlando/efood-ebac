@@ -49,3 +49,15 @@ export const MenuGrid = styled.main`
     grid-template-columns: 1fr;
   }
 `
+
+export const Status = styled.p`
+  min-height: 420px;
+  padding: 96px 0;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+
+  a {
+    text-decoration: underline;
+  }
+`
