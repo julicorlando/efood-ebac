@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import DishCard from '../../components/DishCard'
 import Footer from '../../components/Footer'
@@ -9,6 +10,7 @@ import {
   type Dish,
   type Restaurant as RestaurantType
 } from '../../data/restaurants'
+import { adicionar } from '../../store/reducers/cart'
 import { Container } from '../../styles/shared'
 import {
   Banner,
@@ -22,9 +24,9 @@ import {
 
 const Restaurant = () => {
   const { id } = useParams()
+  const dispatch = useDispatch()
   const [restaurant, setRestaurant] = useState<RestaurantType | null>(null)
   const [selectedDish, setSelectedDish] = useState<Dish | null>(null)
-  const [cartCount, setCartCount] = useState(0)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
@@ -47,14 +49,14 @@ const Restaurant = () => {
   const closeModal = useCallback(() => setSelectedDish(null), [])
 
   const addToCart = (dish: Dish) => {
-    setCartCount((count) => count + 1)
+    dispatch(adicionar(dish))
     setSelectedDish(null)
   }
 
   if (loading) {
     return (
       <>
-        <RestaurantHeader cartCount={cartCount} />
+        <RestaurantHeader />
         <Container>
           <Status>Carregando restaurante...</Status>
         </Container>
@@ -65,7 +67,7 @@ const Restaurant = () => {
   if (!restaurant || error) {
     return (
       <>
-        <RestaurantHeader cartCount={cartCount} />
+        <RestaurantHeader />
         <Container>
           <Status>
             {error || 'Restaurante não encontrado.'} <Link to="/">Voltar ao início</Link>
@@ -77,7 +79,7 @@ const Restaurant = () => {
 
   return (
     <>
-      <RestaurantHeader cartCount={cartCount} />
+      <RestaurantHeader />
 
       <Banner $image={restaurant.cover}>
         <BannerOverlay>
