@@ -40,6 +40,14 @@ npm run dev
 npm run build
 ```
 
-## Publicação
+## Publicação na Vercel
 
-O projeto está preparado para deploy na Vercel, com `vercel.json` configurado para as rotas do React Router.
+O projeto possui `vercel.json` com framework Vite, comando de build, diretório `dist` e fallback de SPA para o React Router.
+
+Ao entregar o projeto, utilize o **Production Domain** do projeto na Vercel, e não uma URL antiga de Preview Deployment. O endereço enviado ao avaliador precisa abrir em uma janela anônima sem solicitar login na Vercel.
+
+Se a página solicitar autenticação, revise em **Vercel → Project → Settings → Deployment Protection** e deixe a produção sem Vercel Authentication/Password Protection para permitir avaliação pública.
+
+## Validação automática
+
+O workflow de CI executa `npm install` e `npm run build` para confirmar que a aplicação gera o bundle de produção corretamente.
