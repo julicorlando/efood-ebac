@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
   :root {
-    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
     color: #e66767;
     background: #fff8f2;
     font-synthesis: none;
@@ -13,6 +13,8 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    list-style: none;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
   }
 
   html {
@@ -23,6 +25,8 @@ const GlobalStyle = createGlobalStyle`
     min-width: 320px;
     min-height: 100vh;
     background: #fff8f2;
+    color: #e66767;
+    line-height: 1;
   }
 
   button,
