@@ -14,7 +14,9 @@ export const Pattern = styled.div`
     radial-gradient(circle at 36px 36px, rgba(230, 103, 103, 0.1) 2px, transparent 2px);
   background-size: 48px 48px;
 
-  a > span {
+  a {
+    display: block;
+    width: fit-content;
     margin: 0 auto 138px;
   }
 
@@ -22,7 +24,7 @@ export const Pattern = styled.div`
     height: 300px;
     padding-top: 40px;
 
-    a > span {
+    a {
       margin-bottom: 50px;
     }
   }
