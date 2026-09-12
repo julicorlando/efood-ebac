@@ -6,27 +6,32 @@ export const Container = styled.div`
 `
 
 export const Brand = styled.span`
+  position: relative;
   display: inline-flex;
+  width: 125px;
+  height: 58px;
   align-items: center;
   justify-content: center;
   color: #e66767;
-  font-size: 38px;
+  font-family: Arial Black, Roboto, Arial, Helvetica, sans-serif;
+  font-size: 39px;
   line-height: 1;
   font-weight: 900;
-  letter-spacing: -3px;
+  letter-spacing: -4px;
 
   span {
-    position: relative;
+    transform: translateX(-5px);
   }
 
   small {
-    font-size: 9px;
-    letter-spacing: 1px;
+    position: absolute;
+    top: 16px;
+    right: 5px;
+    font-size: 8px;
+    line-height: 1;
+    letter-spacing: 0.5px;
     font-weight: 900;
-    margin-left: 3px;
-    margin-top: 8px;
     writing-mode: vertical-rl;
-    transform: rotate(180deg);
   }
 `
 
