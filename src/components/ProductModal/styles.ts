@@ -17,7 +17,7 @@ export const Modal = styled.div`
   height: 344px;
   padding: 32px;
   background: #e66767;
-  color: #fff8f2;
+  color: #fff;
 
   @media (max-width: 700px) {
     width: min(340px, 100%);
@@ -33,16 +33,32 @@ export const CloseButton = styled.button`
   top: 8px;
   right: 8px;
   z-index: 2;
-  width: 20px;
-  height: 20px;
-  display: grid;
-  place-items: center;
+  width: 16px;
+  height: 16px;
   border: 0;
+  padding: 0;
   background: transparent;
-  color: #fff8f2;
-  font-size: 24px;
-  line-height: 1;
-  font-weight: 900;
+  color: transparent;
+  font-size: 0;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 7px;
+    left: 0;
+    width: 16px;
+    height: 2px;
+    background: #fff;
+  }
+
+  &::before {
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    transform: rotate(-45deg);
+  }
 `
 
 export const Content = styled.div`
@@ -78,9 +94,8 @@ export const ProductInfo = styled.div`
   gap: 16px;
 
   button {
-    width: auto;
-    max-width: 218px;
-    margin-top: 0;
+    width: 218px;
+    max-width: 100%;
     background: #ffebd9;
     color: #e66767;
   }
@@ -96,9 +111,11 @@ export const Description = styled.p`
   max-width: 656px;
   font-size: 14px;
   line-height: 22px;
+  font-weight: 400;
 `
 
 export const Portion = styled.p`
   font-size: 14px;
   line-height: 22px;
+  font-weight: 400;
 `

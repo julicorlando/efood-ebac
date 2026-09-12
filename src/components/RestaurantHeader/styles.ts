@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const HeaderBar = styled.header`
+  height: 186px;
   background-color: #ffebd9;
   background-image:
     radial-gradient(circle at 12px 12px, rgba(230, 103, 103, 0.16) 2px, transparent 2px),
@@ -9,14 +10,23 @@ export const HeaderBar = styled.header`
 `
 
 export const HeaderContent = styled.div`
-  min-height: 186px;
+  height: 186px;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
-  gap: 24px;
+  padding: 64px 0;
+
+  > a:nth-child(2) {
+    justify-self: center;
+  }
+
+  img {
+    width: 125px;
+    height: 58px;
+  }
 
   @media (max-width: 700px) {
-    min-height: 220px;
+    height: 220px;
     grid-template-columns: 1fr;
     justify-items: center;
     gap: 12px;
@@ -25,13 +35,18 @@ export const HeaderContent = styled.div`
 `
 
 export const RestaurantsLink = styled.a`
+  justify-self: start;
+  color: #e66767;
   font-size: 18px;
+  line-height: 21px;
   font-weight: 900;
 `
 
 export const Cart = styled.a`
   justify-self: end;
+  color: #e66767;
   font-size: 18px;
+  line-height: 21px;
   font-weight: 900;
 
   @media (max-width: 700px) {

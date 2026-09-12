@@ -9,7 +9,7 @@ export const Banner = styled.section<{ $image: string }>`
 
 export const BannerOverlay = styled.div`
   height: 100%;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.5);
 
   > div {
     height: 100%;
@@ -27,11 +27,13 @@ export const BannerText = styled.div`
 
 export const Cuisine = styled.span`
   font-size: 32px;
+  line-height: 38px;
   font-weight: 100;
 `
 
 export const RestaurantName = styled.h1`
   font-size: 32px;
+  line-height: 38px;
   font-weight: 900;
 `
 

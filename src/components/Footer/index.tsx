@@ -1,4 +1,7 @@
 import Logo from '../Logo'
+import instagram from '../../assets/instagram.svg'
+import facebook from '../../assets/facebook.svg'
+import twitter from '../../assets/twitter.svg'
 import { Container } from '../../styles/shared'
 import { Copyright, FooterBar, Social, SocialItem } from './styles'
 
@@ -8,21 +11,21 @@ const Footer = () => (
       <Logo />
 
       <Social aria-label="Redes sociais">
-        <SocialItem href="#" aria-label="Instagram">
-          ◎
+        <SocialItem href="https://www.instagram.com" aria-label="Instagram">
+          <img src={instagram} alt="" />
         </SocialItem>
-        <SocialItem href="#" aria-label="Facebook">
-          f
+        <SocialItem href="https://www.facebook.com" aria-label="Facebook">
+          <img src={facebook} alt="" />
         </SocialItem>
-        <SocialItem href="#" aria-label="Twitter">
-          ♥
+        <SocialItem href="https://www.twitter.com" aria-label="Twitter">
+          <img src={twitter} alt="" />
         </SocialItem>
       </Social>
 
       <Copyright>
-        A eFood é uma plataforma para divulgação de estabelecimentos. A
-        responsabilidade pela entrega e qualidade dos produtos é dos
-        restaurantes.
+        A efood é uma plataforma para divulgação de estabelecimentos, a
+        responsabilidade pela entrega, qualidade dos produtos é toda do
+        estabelecimento contratado.
       </Copyright>
     </Container>
   </FooterBar>
