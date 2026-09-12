@@ -1,10 +1,5 @@
-import { Brand } from '../../styles/shared'
+import logo from '../../assets/logo.svg'
 
-const Logo = () => (
-  <Brand aria-label="eFood">
-    <span>efood</span>
-    <small>comida</small>
-  </Brand>
-)
+const Logo = () => <img src={logo} alt="Logo da eFood" width={125} height={58} />
 
 export default Logo
