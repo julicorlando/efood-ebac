@@ -65,7 +65,7 @@ const ProductModal = ({ dish, onClose, onAdd }: Props) => {
             <Description>{dish.description}</Description>
             <Portion>Serve: {dish.portion}</Portion>
             <Button type="button" onClick={() => onAdd(dish)}>
-              Adicionar ao carrinho - {formatPrice(dish.price)}
+              Adicionar ao Carrinho - {formatPrice(dish.price)}
             </Button>
           </ProductInfo>
         </Content>
