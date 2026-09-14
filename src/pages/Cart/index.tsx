@@ -1,22 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
-import Footer from '../../components/Footer'
-import RestaurantHeader from '../../components/RestaurantHeader'
+import { useNavigate } from 'react-router-dom'
 import type { RootState } from '../../store'
-import { remover } from '../../store/reducers/cart'
-import { Container } from '../../styles/shared'
+import { fechar, remover } from '../../store/reducers/cart'
 import {
+  CartContainer,
   CartItem,
   CartList,
   EmptyCart,
   FinishButton,
   ItemImage,
   ItemInfo,
-  Page,
-  PageTitle,
+  Overlay,
+  Prices,
   RemoveButton,
-  Summary,
-  Total
+  Sidebar
 } from './styles'
 
 const formatPrice = (price: number) =>
@@ -28,63 +25,63 @@ const formatPrice = (price: number) =>
 const Cart = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const items = useSelector((state: RootState) => state.cart.items)
+  const { items, isOpen } = useSelector((state: RootState) => state.cart)
   const total = items.reduce((sum, item) => sum + item.price, 0)
 
+  const goToCheckout = () => {
+    dispatch(fechar())
+    navigate('/checkout')
+  }
+
+  if (!isOpen) return null
+
   return (
-    <>
-      <RestaurantHeader />
+    <CartContainer aria-hidden={!isOpen}>
+      <Overlay onClick={() => dispatch(fechar())} />
 
-      <Page>
-        <Container>
-          <PageTitle>Carrinho</PageTitle>
+      <Sidebar role="dialog" aria-modal="true" aria-label="Carrinho de compras">
+        {items.length === 0 ? (
+          <EmptyCart>
+            <strong>O carrinho está vazio.</strong>
+            <p>Adicione um prato para continuar com o pedido.</p>
+          </EmptyCart>
+        ) : (
+          <>
+            <CartList>
+              {items.map((item, index) => (
+                <CartItem key={`${item.id}-${index}`}>
+                  <ItemImage src={item.image} alt={item.name} />
 
-          {items.length === 0 ? (
-            <EmptyCart>
-              <strong>Seu carrinho está vazio.</strong>
-              <p>Escolha um restaurante e adicione produtos para continuar.</p>
-              <Link to="/">Ver restaurantes</Link>
-            </EmptyCart>
-          ) : (
-            <>
-              <CartList>
-                {items.map((item, index) => (
-                  <CartItem key={`${item.id}-${index}`}>
-                    <ItemImage src={item.image} alt={item.name} />
+                  <ItemInfo>
+                    <h3>{item.name}</h3>
+                    <span>{formatPrice(item.price)}</span>
+                  </ItemInfo>
 
-                    <ItemInfo>
-                      <h2>{item.name}</h2>
-                      <p>{item.description}</p>
-                      <strong>{formatPrice(item.price)}</strong>
-                    </ItemInfo>
+                  <RemoveButton
+                    type="button"
+                    aria-label={`Remover ${item.name} do carrinho`}
+                    onClick={() => dispatch(remover(index))}
+                  >
+                    <svg viewBox="0 0 16 16" aria-hidden="true">
+                      <path d="M5.5 1.5h5l.5 1.5H14v1.5H2V3h3l.5-1.5ZM3.5 5.5h9l-.6 8.5H4.1l-.6-8.5Zm2 1.5.3 5.5h1.3L6.8 7H5.5Zm3.7 0-.3 5.5h1.3l.3-5.5H9.2Z" />
+                    </svg>
+                  </RemoveButton>
+                </CartItem>
+              ))}
+            </CartList>
 
-                    <RemoveButton
-                      type="button"
-                      aria-label={`Remover ${item.name} do carrinho`}
-                      onClick={() => dispatch(remover(index))}
-                    >
-                      Remover
-                    </RemoveButton>
-                  </CartItem>
-                ))}
-              </CartList>
+            <Prices>
+              <span>Valor total</span>
+              <strong>{formatPrice(total)}</strong>
+            </Prices>
 
-              <Summary>
-                <Total>
-                  <span>Valor total</span>
-                  <strong>{formatPrice(total)}</strong>
-                </Total>
-                <FinishButton type="button" onClick={() => navigate('/checkout')}>
-                  Continuar com a entrega
-                </FinishButton>
-              </Summary>
-            </>
-          )}
-        </Container>
-      </Page>
-
-      <Footer />
-    </>
+            <FinishButton type="button" onClick={goToCheckout}>
+              Continuar com a entrega
+            </FinishButton>
+          </>
+        )}
+      </Sidebar>
+    </CartContainer>
   )
 }
 

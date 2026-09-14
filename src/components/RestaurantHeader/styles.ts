@@ -42,12 +42,17 @@ export const RestaurantsLink = styled.a`
   font-weight: 900;
 `
 
-export const Cart = styled.a`
+export const Cart = styled.button`
   justify-self: end;
+  border: 0;
+  padding: 0;
+  background: transparent;
   color: #e66767;
+  font-family: inherit;
   font-size: 18px;
   line-height: 21px;
   font-weight: 900;
+  cursor: pointer;
 
   @media (max-width: 700px) {
     justify-self: center;

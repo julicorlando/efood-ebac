@@ -1,124 +1,124 @@
 import styled from 'styled-components'
 
-export const Page = styled.main`
-  min-height: 520px;
-  padding: 56px 0 0;
+export const CartContainer = styled.div`
+  position: fixed;
+  inset: 0;
+  z-index: 100;
 `
 
-export const PageTitle = styled.h1`
-  margin-bottom: 32px;
-  color: #e66767;
-  font-size: 32px;
-  font-weight: 900;
+export const Overlay = styled.div`
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
 `
 
-export const CartList = styled.div`
+export const Sidebar = styled.aside`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(360px, 100%);
+  height: 100%;
+  padding: 32px 8px;
+  overflow-y: auto;
+  background: #e66767;
+`
+
+export const CartList = styled.ul`
   display: grid;
   gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 `
 
-export const CartItem = styled.article`
+export const CartItem = styled.li`
   position: relative;
   display: grid;
-  grid-template-columns: 160px 1fr auto;
-  gap: 16px;
-  align-items: center;
-  padding: 12px;
-  background: #e66767;
-  color: #ffebd9;
-
-  @media (max-width: 700px) {
-    grid-template-columns: 96px 1fr;
-
-    button {
-      grid-column: 1 / -1;
-    }
-  }
+  grid-template-columns: 80px 1fr;
+  gap: 8px;
+  min-height: 100px;
+  padding: 8px 8px 12px;
+  background: #ffebd9;
+  color: #e66767;
 `
 
 export const ItemImage = styled.img`
-  width: 160px;
-  height: 120px;
+  width: 80px;
+  height: 80px;
   object-fit: cover;
-
-  @media (max-width: 700px) {
-    width: 96px;
-    height: 96px;
-  }
 `
 
 export const ItemInfo = styled.div`
-  h2 {
-    margin-bottom: 8px;
-    font-size: 20px;
+  min-width: 0;
+  padding-right: 20px;
+
+  h3 {
+    margin: 0 0 16px;
+    color: #e66767;
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: 900;
   }
 
-  p {
-    max-width: 620px;
-    margin-bottom: 12px;
+  span {
+    color: #e66767;
     font-size: 14px;
-    line-height: 20px;
-  }
-
-  strong {
-    font-size: 16px;
+    line-height: 16px;
   }
 `
 
 export const RemoveButton = styled.button`
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  width: 16px;
+  height: 16px;
   border: 0;
-  background: #ffebd9;
+  padding: 0;
+  background: transparent;
   color: #e66767;
-  padding: 8px 12px;
-  font-weight: 700;
+  cursor: pointer;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+  }
 `
 
-export const Summary = styled.aside`
-  width: min(420px, 100%);
-  margin: 32px 0 0 auto;
-  padding: 20px;
-  border: 1px solid #e66767;
-  background: #fff;
-`
-
-export const Total = styled.div`
+export const Prices = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 16px;
-  font-size: 18px;
+  margin-top: 40px;
+  color: #ffebd9;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 700;
 `
 
 export const FinishButton = styled.button`
   width: 100%;
+  min-height: 24px;
+  margin-top: 16px;
   border: 0;
-  padding: 12px 16px;
-  background: #e66767;
-  color: #ffebd9;
-  font-weight: 900;
+  padding: 4px 8px;
+  background: #ffebd9;
+  color: #e66767;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 700;
+  cursor: pointer;
 `
 
 export const EmptyCart = styled.div`
-  padding: 32px;
-  border: 1px solid #e66767;
-  background: #fff;
+  color: #ffebd9;
+  font-size: 14px;
+  line-height: 20px;
 
   strong {
     display: block;
     margin-bottom: 8px;
-    font-size: 20px;
-  }
-
-  p {
-    margin-bottom: 20px;
-    color: #8f4b4b;
-  }
-
-  a {
-    display: inline-block;
-    padding: 10px 14px;
-    background: #e66767;
-    color: #ffebd9;
-    font-weight: 700;
+    font-size: 16px;
   }
 `
