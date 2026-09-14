@@ -3,10 +3,12 @@ import type { Dish } from '../../data/restaurants'
 
 type CartState = {
   items: Dish[]
+  isOpen: boolean
 }
 
 const initialState: CartState = {
-  items: []
+  items: [],
+  isOpen: false
 }
 
 const cartSlice = createSlice({
@@ -21,9 +23,15 @@ const cartSlice = createSlice({
     },
     limpar: (state) => {
       state.items = []
+    },
+    abrir: (state) => {
+      state.isOpen = true
+    },
+    fechar: (state) => {
+      state.isOpen = false
     }
   }
 })
 
-export const { adicionar, remover, limpar } = cartSlice.actions
+export const { adicionar, remover, limpar, abrir, fechar } = cartSlice.actions
 export default cartSlice.reducer
