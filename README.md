@@ -19,7 +19,9 @@ Projeto React baseado no layout do **eFood** disponibilizado pela EBAC no Figma.
 - Cardápio carregado dinamicamente via AJAX
 - Modal de produto com foto, descrição, porção e preço
 - Botão de compra que abre a modal
-- Inclusão demonstrativa no contador do carrinho
+- Carrinho de compras em modal lateral
+- Entrega, pagamento e confirmação por etapas no mesmo modal, mantendo o restaurante ao fundo
+- Validação com Formik/Yup e envio do pedido à API da EBAC
 - Layout responsivo com Styled Components
 - Fallback de SPA configurado para a Vercel
 
